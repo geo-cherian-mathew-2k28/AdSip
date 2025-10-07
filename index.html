@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdSip Lucky Cup Draw | TechFest 2025</title>
     <meta name="description" content="Scan your AdSip cup and enter the Lucky Cup Draw at Amal Jyothi TechFest 2025. Exciting prizes and offers await!">
+    <!-- Favicon Placeholder -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥤</text></svg>">
+    <!-- Fonts: Poppins (Used for modern, bold titles) and Inter (Used for clean body text) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Reset and Variables */
@@ -470,13 +472,15 @@
 </head>
 <body>
 
+    <!-- Fixed Glassmorphic Header -->
     <header class="header">
         <div class="container">
             <div class="logo">AdSip.</div>
-            <a href="#lucky-draw-form" class="header-button">About Lucky Draw</a>
+            <a href="#form-section-target" class="header-button">About Lucky Draw</a>
         </div>
     </header>
 
+    <!-- Hero Section (Ad Display Zone) -->
     <section class="hero">
         <div class="container">
             <div class="hero-header">
@@ -485,29 +489,33 @@
             </div>
             
             <div class="ad-grid">
+                <!-- Ad Card 1: Will animate on scroll -->
                 <div class="ad-card" data-aos="fade-up" data-delay="0">
-                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND1" alt="Brand 1 Logo" class="client-logo">
+                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND1" onerror="this.onerror=null; this.src='https://placehold.co/80x80/FFD700/120a1f?text=B1';" alt="Brand 1 Logo" class="client-logo">
                     <h3>SwiftCode Solutions</h3>
                     <p>The future of dev is here. Learn to code, ship fast.</p>
                     <a href="https://www.google.com" target="_blank" class="see-offer-button">See Offer</a>
                 </div>
                 
+                <!-- Ad Card 2 -->
                 <div class="ad-card" data-aos="fade-up" data-delay="100">
-                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND2" alt="Brand 2 Logo" class="client-logo">
+                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/FF7E00/120a1f?text=B2';" alt="Brand 2 Logo" class="client-logo">
                     <h3>Gamer's Hub</h3>
                     <p>Level up your setup. Top gear at student prices.</p>
                     <a href="https://www.google.com" target="_blank" class="see-offer-button">See Offer</a>
                 </div>
                 
+                <!-- Ad Card 3 -->
                 <div class="ad-card" data-aos="fade-up" data-delay="200">
-                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND3" alt="Brand 3 Logo" class="client-logo">
+                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND3" onerror="this.onerror=null; this.src='https://placehold.co/80x80/FF4FBF/120a1f?text=B3';" alt="Brand 3 Logo" class="client-logo">
                     <h3>Campus Eats</h3>
                     <p>Your late-night food delivery sorted. Flat 50% off!</p>
                     <a href="https://www.google.com" target="_blank" class="see-offer-button">See Offer</a>
                 </div>
                 
+                <!-- Ad Card 4 -->
                 <div class="ad-card" data-aos="fade-up" data-delay="300">
-                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND4" alt="Brand 4 Logo" class="client-logo">
+                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND4" onerror="this.onerror=null; this.src='https://placehold.co/80x80/00D4FF/120a1f?text=B4';" alt="Brand 4 Logo" class="client-logo">
                     <h3>FinPulse</h3>
                     <p>Master your money with smart finance tools.</p>
                     <a href="https://www.google.com" target="_blank" class="see-offer-button">See Offer</a>
@@ -516,6 +524,7 @@
         </div>
     </section>
 
+    <!-- Countdown Section -->
     <section class="countdown-section">
         <div class="container">
             <h2 class="section-title">Draw Closes In...</h2>
@@ -543,13 +552,23 @@
         </div>
     </section>
 
+    <!-- Lucky Draw Entry Form -->
     <section class="form-section" id="form-section-target">
         <div class="container">
             <h2 class="section-title">Enter the AdSip Lucky Cup Draw!</h2>
-            <p>Scan the code on your cup, visit this page, and submit your phone number below to enter the draw. **One lucky winner will win a cash prize!**</p>
+            <p>Scan the cup, visit this page, and submit your phone number below to enter the draw. **One lucky winner will win a cash prize!**</p>
             
-            <form id="lucky-draw-form">
-                <input type="tel" id="phone-number-input" placeholder="Enter your 10-digit phone number" required pattern="[0-9]{10}" maxlength="10">
+            <!-- FORM IS NOW HANDLED ASYNCHRONOUSLY BY JAVASCRIPT -->
+            <form id="lucky-draw-form"> 
+
+                <input type="tel" 
+                       id="phone-number-input" 
+                       placeholder="Enter your 10-digit phone number" 
+                       required 
+                       pattern="[0-9]{10}" 
+                       maxlength="10"
+                       name="Phone Number"> 
+
                 <button type="submit" id="submit-button" class="glow-button">Submit & Enter Draw</button>
                 <div id="form-message"></div>
             </form>
@@ -557,6 +576,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         Developed by Team AdSip | Amal Jyothi College of Engineering
     </footer>
@@ -564,12 +584,18 @@
     <script>
         // --- Core JavaScript Logic ---
 
-        // 1. Countdown Logic
+        // 1. DOM Elements
         const countdownElement = document.getElementById('countdown');
         const countdownMessage = document.getElementById('countdown-message');
         const formElement = document.getElementById('lucky-draw-form');
         const submitButton = document.getElementById('submit-button');
+        const phoneInput = document.getElementById('phone-number-input');
+        const formMessage = document.getElementById('form-message');
 
+        // 🛑 CRITICAL: REPLACE this placeholder with your actual Formspree Submission URL (e.g., https://formspree.io/f/xxxxxxxx)
+        const FORMSPREE_URL = "https://formspree.io/f/xblzadjw"; 
+
+        // 2. Countdown Logic
         // Set the final date: October 18, 2025, 5:00 PM IST
         const finalDate = new Date('October 18, 2025 17:00:00 GMT+0530').getTime();
 
@@ -596,10 +622,11 @@
                 countdownMessage.style.display = 'block';
                 countdownMessage.innerHTML = '🎉 **The Lucky Draw has Ended!** Winner will be announced soon.';
                 
-                // Disable the form
+                // Disable the form and stop submission
+                formElement.onsubmit = (e) => { e.preventDefault(); };
                 submitButton.disabled = true;
                 submitButton.textContent = 'Draw Closed';
-                document.getElementById('phone-number-input').disabled = true;
+                phoneInput.disabled = true;
             }
         }
 
@@ -607,83 +634,81 @@
         updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
 
-        // 2. Google Apps Script Integration (Form Submission)
-
-        // **NOTE:** Replace this with your actual Google Apps Script Web App URL
-        const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzcAHgHWrs4Ce9Se-llw2LeKMpTHNYHsFXO5uUxkeSEz3JXioQeeZCeFXTODYzBa6dg/exec'; 
-
-        // Check for locally stored submission
-        const hasSubmitted = localStorage.getItem('adsip_submitted');
-        if (hasSubmitted) {
+        // 3. Formspree Submission Success Handler
+        function handleFormSuccess() {
+            formElement.reset(); // Clear the form input
+            formMessage.innerHTML = '✅ <span class="success">You’ve been entered in the draw! Good luck 🍀</span>';
+            
+            // Disable form elements to prevent re-submission
             submitButton.disabled = true;
-            submitButton.textContent = 'Already Entered! 🥳';
-            document.getElementById('phone-number-input').disabled = true;
-            document.getElementById('form-message').innerHTML = '<span class="success">You have already submitted your number. Good luck!</span>';
+            submitButton.textContent = 'Entered! 🎉';
+            phoneInput.disabled = true;
+
+            // Store flag in local storage to prevent future submissions on next visit
+            localStorage.setItem('adsip_submitted', 'true');
         }
 
-
+        // 4. Asynchronous Formspree Submission Handler (AJAX)
         formElement.addEventListener('submit', async function(e) {
             e.preventDefault();
-            const phoneInput = document.getElementById('phone-number-input');
-            const phoneNumber = phoneInput.value.trim();
-            const formMessage = document.getElementById('form-message');
-            
-            formMessage.textContent = 'Processing...';
-            submitButton.disabled = true;
 
-            // Simple validation check (should be 10 digits)
-            if (!/^\d{10}$/.test(phoneNumber)) {
+            // Client-side validation check
+            if (!phoneInput.checkValidity()) {
                 formMessage.innerHTML = '<span class="error">❌ Please enter a valid 10-digit phone number.</span>';
-                submitButton.disabled = false;
                 return;
             }
             
-            if (hasSubmitted) {
+            // Prevent duplicate submission check
+            if (localStorage.getItem('adsip_submitted')) {
                 formMessage.innerHTML = '<span class="error">You have already submitted. Duplicate entries are not allowed.</span>';
                 return;
             }
 
-            // Data payload for Google Apps Script
-            const data = {
-                phoneNumber: phoneNumber,
-            };
+            submitButton.disabled = true;
+            formMessage.textContent = 'Submitting... Please wait.';
+
+            // Collect data from the form
+            const formData = new FormData(formElement);
 
             try {
-                // Send data to the Google Apps Script endpoint
-                const response = await fetch(GAS_WEB_APP_URL, {
+                const response = await fetch(FORMSPREE_URL, {
                     method: 'POST',
-                    mode: 'cors', // Crucial for cross-origin requests
-                    cache: 'no-cache',
+                    body: formData,
                     headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
+                        // Formspree requires this specific header for AJAX submissions
+                        'Accept': 'application/json' 
+                    }
                 });
 
-                // Assuming the Apps Script returns a simple success object
-                // For a typical Apps Script doPost, the response text is usually fine.
-                const result = await response.json(); 
-
-                if (result.status === 'success') {
-                    formMessage.innerHTML = '✅ **You’ve been entered in the draw!** Good luck 🍀';
-                    localStorage.setItem('adsip_submitted', 'true');
-                    phoneInput.disabled = true;
-                    submitButton.textContent = 'Entered! 🎉';
+                if (response.ok) {
+                    handleFormSuccess(); // Update UI to success state
                 } else {
-                    // Handle server-side errors (e.g., sheet error, duplicate check by Apps Script)
-                    formMessage.innerHTML = `<span class="error">⚠️ Submission Failed: ${result.message || 'An unknown error occurred.'}</span>`;
+                    // Handle server errors (e.g., if Formspree is down or form not active)
+                    const errorText = await response.json();
+                    formMessage.innerHTML = `<span class="error">Submission Error: ${errorText.error || 'Check Formspree dashboard.'}</span>`;
                     submitButton.disabled = false;
                 }
 
             } catch (error) {
-                console.error('Submission Error:', error);
-                formMessage.innerHTML = '<span class="error">🚨 Network Error. Could not connect to the server. Try again.</span>';
+                console.error('Submission Failed:', error);
+                formMessage.innerHTML = '<span class="error">🚨 Network Error. Could not submit form.</span>';
                 submitButton.disabled = false;
             }
         });
 
-        // 3. Scroll Animations (AOS replacement)
-        // A simple Intersection Observer for the fade-in effect on ad cards.
+
+        // 5. Check for duplicate submissions on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const hasSubmitted = localStorage.getItem('adsip_submitted');
+            
+            if (hasSubmitted) {
+                // If already submitted, immediately apply the success state
+                handleFormSuccess();
+                formMessage.innerHTML = '<span class="success">You have already submitted your number. Good luck 🍀</span>';
+            }
+        });
+        
+        // 6. Scroll Animations (AOS replacement)
         const adCards = document.querySelectorAll('.ad-card');
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -696,14 +721,11 @@
                     }, delay);
                 }
             });
-        }, { threshold: 0.2 }); // Trigger when 20% of the item is visible
+        }, { threshold: 0.2 }); 
 
         adCards.forEach(card => {
             observer.observe(card);
         });
-
-        // Optional: Smooth scroll for "About Lucky Draw" button (already set with href="#form-section-target")
-        // JavaScript is not needed if using CSS scroll-behavior: smooth on HTML element.
 
     </script>
 </body>
