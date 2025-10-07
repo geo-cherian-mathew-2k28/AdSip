@@ -9,8 +9,10 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥤</text></svg>">
     <!-- Fonts: Poppins (Used for modern, bold titles) and Inter (Used for clean body text) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons (Up arrow and Instagram) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        /* Global Reset and Variables */
+        /* Global Reset and Variables - ORIGINAL VIBRANT THEME RESTORED */
         :root {
             --color-pink: #FF4FBF;
             --color-orange: #FF7E00;
@@ -43,7 +45,7 @@
             line-height: 1.6;
         }
         
-        /* Subtle Animated Background */
+        /* Subtle Animated Background - Original Gradient */
         body::before {
             content: '';
             position: fixed;
@@ -77,27 +79,25 @@
             text-align: center;
             margin-bottom: 0.5rem;
             font-weight: 700;
+            /* Original Gradient */
             background: linear-gradient(90deg, var(--color-orange), var(--color-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255, 126, 0, 0.5); /* Subtle glow */
+            text-shadow: 0 0 10px rgba(255, 126, 0, 0.5); 
         }
         
         .glow-button {
-            display: inline-block;
             padding: 12px 28px;
             border-radius: 50px;
-            font-family: var(--font-header);
             font-weight: 600;
-            text-decoration: none;
             transition: all 0.3s ease-in-out;
-            border: none;
-            cursor: pointer;
-            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 1;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            text-align: center;
         }
 
         .glow-button::before {
@@ -107,6 +107,7 @@
             left: -20px;
             width: 140%;
             height: 140%;
+            /* Original Button Gradient */
             background: linear-gradient(45deg, var(--color-yellow), var(--color-orange), var(--color-pink));
             background-size: 200% 200%;
             z-index: -1;
@@ -117,7 +118,6 @@
         .glow-button:hover::before {
             background-position: 100% 100%;
             box-shadow: 0 0 20px rgba(255, 126, 0, 0.8);
-            transform: scale(1.05);
         }
 
         /* --- Header --- */
@@ -128,10 +128,9 @@
             width: 100%;
             z-index: 100;
             padding: 15px 0;
-            background: rgba(255, 255, 255, 0.05); /* Glassmorphism background */
+            background: rgba(255, 255, 255, 0.05); 
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: background 0.3s ease;
         }
 
         .header .container {
@@ -145,6 +144,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: -1px;
+            /* Original Logo Gradient */
             background: linear-gradient(90deg, var(--color-blue), var(--color-yellow));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -181,10 +181,11 @@
 
         .hero-header h1 {
             font-family: var(--font-header);
-            font-size: 3.5rem;
+            font-size: 4rem; 
             font-weight: 700;
             margin-bottom: 10px;
             line-height: 1.1;
+            /* Original Hero Gradient */
             background: linear-gradient(45deg, var(--color-pink), var(--color-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -197,7 +198,7 @@
 
         .ad-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
             gap: 30px;
         }
 
@@ -208,7 +209,7 @@
             text-align: center;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
-            opacity: 0; /* Initial state for fade-in animation */
+            opacity: 0; 
             transform: translateY(20px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(5px);
@@ -223,17 +224,26 @@
             opacity: 1;
             transform: translateY(0);
         }
-
+        
+        .client-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            height: 90px; 
+        }
+        
         .client-logo {
             width: 80px;
             height: 80px;
             object-fit: contain;
             border-radius: 15px;
-            margin: 0 auto 15px;
             background-color: #fff;
             padding: 5px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: none;
         }
+
 
         .ad-card h3 {
             font-family: var(--font-header);
@@ -248,7 +258,13 @@
             margin-bottom: 25px;
         }
 
-        .ad-card .see-offer-button {
+        /* Renamed for consistency and clarity. This is the only button class in the ad card. */
+        .ad-card-button {
+            /* Inherit glow button base styles */
+            display: inline-block;
+            margin-top: 10px; /* Ensures spacing from paragraph above */
+            
+            /* Apply specific color and style overrides */
             background: linear-gradient(90deg, var(--color-yellow), var(--color-orange));
             color: var(--color-dark);
             font-weight: 700;
@@ -258,10 +274,36 @@
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             font-size: 1rem;
-        }
 
-        .ad-card .see-offer-button:hover {
-            transform: scale(1.05);
+            /* Add glow mechanism attributes */
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        /* Copying glow button effects to the specific ad card button */
+        .ad-card-button::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 140%;
+            height: 140%;
+            background: linear-gradient(45deg, var(--color-yellow), var(--color-orange), var(--color-pink));
+            background-size: 200% 200%;
+            z-index: -1;
+            transition: background-position 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            border-radius: inherit;
+        }
+        
+        .ad-card-button:hover::before {
+            background-position: 100% 100%;
+            box-shadow: 0 0 20px rgba(255, 126, 0, 0.8);
+        }
+        .ad-card-button:hover {
             box-shadow: 0 0 25px rgba(255, 215, 0, 1);
         }
 
@@ -277,33 +319,45 @@
             margin-bottom: 30px;
         }
 
+        /* NEW COMPACT COUNTDOWN CONTAINER */
         #countdown {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: flex-start; /* Align numbers and labels neatly */
+            gap: 15px; /* Reduced gap between units */
             margin-bottom: 40px;
         }
 
         .timer-unit {
             display: flex;
-            flex-direction: column;
+            flex-direction: column; 
             align-items: center;
+            line-height: 1;
         }
-
+        
         .timer-unit span {
-            font-family: 'Digital-7', monospace; /* Use a modern digital-style font for effect */
-            font-size: 4rem;
+            font-family: 'Digital-7', monospace;
             font-weight: bold;
             letter-spacing: -2px;
             background: linear-gradient(90deg, var(--color-pink), var(--color-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(255, 79, 191, 0.8); /* Neon glow */
-            padding: 10px;
-            border-radius: 10px;
-            min-width: 90px;
-            transition: transform 0.1s ease;
+            text-shadow: 0 0 20px rgba(255, 79, 191, 0.8);
+            padding: 5px; /* Reduced padding */
+            border-radius: 5px;
+            font-size: 4rem; /* Standardized size */
+            min-width: 90px; 
             animation: pulseSubtle 1.5s infinite alternate;
+        }
+        
+        /* Neon Separator Styling */
+        .separator {
+            font-size: 4rem;
+            font-weight: bold;
+            line-height: 1.2;
+            padding-top: 5px; /* Align separator with numbers */
+            color: var(--color-yellow);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
         }
         
         @keyframes pulseSubtle {
@@ -312,7 +366,7 @@
         }
 
         .timer-unit small {
-            font-size: 0.9rem;
+            font-size: 0.9rem; 
             font-weight: 600;
             color: #bbb;
             text-transform: uppercase;
@@ -320,16 +374,9 @@
         }
 
         #countdown-message {
-            font-family: var(--font-header);
-            font-size: 2rem;
             color: var(--color-yellow);
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
-            display: none;
-            padding: 20px;
-            border-radius: 10px;
-            background: var(--color-light-bg);
-            max-width: 600px;
-            margin: 0 auto 30px;
+            font-size: 2rem;
         }
 
 
@@ -341,29 +388,29 @@
             text-align: center;
         }
 
-        .form-section p {
-            color: #aaa;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
         #lucky-draw-form {
+            /* Reduced gap and cleaned up form spacing */
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px; /* Reduced spacing for tighter layout (Button under Input) */
             background: var(--color-light-bg);
             padding: 40px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding-bottom: 50px; /* Ensures spacing below the form */
         }
 
+        /* IMPRESSIVE INPUT BOX STYLING */
         #phone-number-input {
             width: 100%;
             padding: 15px 20px;
             border-radius: 10px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.3);
+            /* Brighter, more visible border */
+            border: 2px solid rgba(255, 255, 255, 0.35); 
+            /* Darker background and inner shadow for depth */
+            background: rgba(0, 0, 0, 0.4); 
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.7); 
             color: #fff;
             font-size: 1.1rem;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -373,49 +420,32 @@
         #phone-number-input:focus {
             border-color: var(--color-pink);
             outline: none;
-            box-shadow: 0 0 10px rgba(255, 79, 191, 0.5);
+            /* Enhanced focus glow */
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.7), 0 0 15px var(--color-pink); 
         }
 
         #submit-button {
             background: linear-gradient(90deg, var(--color-orange), var(--color-pink));
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 700;
-            padding: 15px;
-            border-radius: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
             box-shadow: 0 0 20px rgba(255, 79, 191, 0.5);
+            /* Resetting padding/margin to ensure tight alignment */
+            padding: 15px;
+            margin-top: 0; 
+            border-radius: 10px;
+            font-size: 1.2rem;
         }
 
         #submit-button:not(:disabled):hover {
-            transform: scale(1.02);
             box-shadow: 0 0 30px rgba(255, 79, 191, 0.8);
-        }
-        
-        #submit-button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            background: #444;
-            box-shadow: none;
-        }
-
-        #form-message {
-            margin-top: 15px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            min-height: 25px; /* Prevent layout shift */
         }
         
         .success {
             color: var(--color-blue);
-            text-shadow: 0 0 5px rgba(0, 212, 255, 0.7);
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.7);
         }
         
         .error {
             color: var(--color-yellow);
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
         }
 
         /* --- Footer --- */
@@ -425,6 +455,10 @@
             font-size: 0.9rem;
             color: #aaa;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
         .footer::before {
@@ -439,33 +473,64 @@
             border-radius: 5px;
             box-shadow: 0 0 10px var(--color-blue);
         }
+        .social-icon {
+            color: #fff;
+            font-size: 1.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+        
+        /* --- Scroll to Top Button --- */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: none; /* Initially hidden, shown by JS */
+            z-index: 90;
+            font-size: 1.2rem;
+            color: var(--color-dark);
+            background: linear-gradient(45deg, var(--color-orange), var(--color-yellow));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 25px var(--color-yellow);
+            transition: opacity 0.3s, transform 0.3s;
+        }
 
-        /* --- Responsive Adjustments --- */
+        #scrollTopBtn:hover {
+            transform: scale(1.1);
+        }
+
+
+        /* --- MOBILE OPTIMIZATION (Focus on screens <= 768px) --- */
         @media (max-width: 768px) {
-            .hero {
-                padding-top: 100px;
-            }
             .hero-header h1 {
                 font-size: 2.5rem;
             }
-            .section-title {
-                font-size: 2rem;
+            
+            /* Mobile Countdown Adjustments */
+            #countdown {
+                gap: 10px; 
+                flex-wrap: nowrap; /* Keep it on one line if possible */
+            }
+            .timer-unit {
+                min-width: unset;
+                flex: 1;
             }
             .timer-unit span {
-                font-size: 3rem;
-                min-width: 70px;
+                font-size: 2.5rem; /* Reduced size for better fit */
+                min-width: 50px;
+            }
+            .separator {
+                font-size: 2.5rem;
             }
             .timer-unit small {
-                font-size: 0.8rem;
+                font-size: 0.6rem;
             }
-            #countdown-message {
-                font-size: 1.5rem;
-            }
-            .ad-card {
-                padding: 25px;
-            }
-            .header-button {
-                display: none; /* Hide header button on smaller screens for simplicity */
+            .ad-grid {
+                grid-template-columns: 1fr; 
             }
         }
     </style>
@@ -476,7 +541,8 @@
     <header class="header">
         <div class="container">
             <div class="logo">AdSip.</div>
-            <a href="#form-section-target" class="header-button">About Lucky Draw</a>
+            <!-- DIRECT SUBMIT LINK -->
+            <a href="#form-section-target" class="header-button">Enter Draw Now</a>
         </div>
     </header>
 
@@ -491,34 +557,42 @@
             <div class="ad-grid">
                 <!-- Ad Card 1: Will animate on scroll -->
                 <div class="ad-card" data-aos="fade-up" data-delay="0">
-                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND1" onerror="this.onerror=null; this.src='https://placehold.co/80x80/FFD700/120a1f?text=B1';" alt="Brand 1 Logo" class="client-logo">
+                    <div class="client-logo-container">
+                        <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND1" onerror="this.onerror=null; this.src='https://placehold.co/80x80/FFD700/120a1f?text=B1';" alt="Brand 1 Logo" class="client-logo">
+                    </div>
                     <h3>SwiftCode Solutions</h3>
                     <p>The future of dev is here. Learn to code, ship fast.</p>
-                    <a href="https://www.google.com" target="_blank" class="see-offer-button">See Offer</a>
+                    <a href="https://www.google.com" target="_blank" class="ad-card-button">See Offer</a>
                 </div>
                 
                 <!-- Ad Card 2 -->
                 <div class="ad-card" data-aos="fade-up" data-delay="100">
-                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/FF7E00/120a1f?text=B2';" alt="Brand 2 Logo" class="client-logo">
+                    <div class="client-logo-container">
+                        <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/FF7E00/120a1f?text=B2';" alt="Brand 2 Logo" class="client-logo">
+                    </div>
                     <h3>Gamer's Hub</h3>
                     <p>Level up your setup. Top gear at student prices.</p>
-                    <a href="https://www.google.com" target="_blank" class="see-offer-button">See Offer</a>
+                    <a href="https://www.google.com" target="_blank" class="ad-card-button">See Offer</a>
                 </div>
                 
                 <!-- Ad Card 3 -->
                 <div class="ad-card" data-aos="fade-up" data-delay="200">
-                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND3" onerror="this.onerror=null; this.src='https://placehold.co/80x80/FF4FBF/120a1f?text=B3';" alt="Brand 3 Logo" class="client-logo">
+                    <div class="client-logo-container">
+                        <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND3" onerror="this.onerror=null; this.src='https://placehold.co/80x80/FF4FBF/120a1f?text=B3';" alt="Brand 3 Logo" class="client-logo">
+                    </div>
                     <h3>Campus Eats</h3>
                     <p>Your late-night food delivery sorted. Flat 50% off!</p>
-                    <a href="https://www.google.com" target="_blank" class="see-offer-button">See Offer</a>
+                    <a href="https://www.google.com" target="_blank" class="ad-card-button">See Offer</a>
                 </div>
                 
                 <!-- Ad Card 4 -->
                 <div class="ad-card" data-aos="fade-up" data-delay="300">
-                    <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND4" onerror="this.onerror=null; this.src='https://placehold.co/80x80/00D4FF/120a1f?text=B4';" alt="Brand 4 Logo" class="client-logo">
+                    <div class="client-logo-container">
+                        <img src="https://via.placeholder.com/80/FFFFFF?text=BRAND4" onerror="this.onerror=null; this.src='https://placehold.co/80x80/00D4FF/120a1f?text=B4';" alt="Brand 4 Logo" class="client-logo">
+                    </div>
                     <h3>FinPulse</h3>
                     <p>Master your money with smart finance tools.</p>
-                    <a href="https://www.google.com" target="_blank" class="see-offer-button">See Offer</a>
+                    <a href="https://www.google.com" target="_blank" class="ad-card-button">See Offer</a>
                 </div>
             </div>
         </div>
@@ -531,19 +605,23 @@
             
             <div id="countdown-message"></div>
             
+            <!-- UPDATED: Compact, single-line countdown -->
             <div id="countdown">
                 <div class="timer-unit">
                     <span id="days">00</span>
                     <small>Days</small>
                 </div>
+                <span class="separator">:</span>
                 <div class="timer-unit">
                     <span id="hours">00</span>
                     <small>Hours</small>
                 </div>
+                <span class="separator">:</span>
                 <div class="timer-unit">
                     <span id="minutes">00</span>
                     <small>Minutes</small>
                 </div>
+                <span class="separator">:</span>
                 <div class="timer-unit">
                     <span id="seconds">00</span>
                     <small>Seconds</small>
@@ -578,8 +656,17 @@
 
     <!-- Footer -->
     <footer class="footer">
-        Developed by Team AdSip | Amal Jyothi College of Engineering
+        <!-- INSTAGRAM ICON -->
+        <a href="https://www.instagram.com/adsip_official/" target="_blank" class="social-icon" aria-label="Follow AdSip on Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <span>Developed by Team AdSip | Amal Jyothi College of Engineering</span>
     </footer>
+    
+    <!-- SCROLL TO TOP BUTTON -->
+    <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script>
         // --- Core JavaScript Logic ---
@@ -591,11 +678,31 @@
         const submitButton = document.getElementById('submit-button');
         const phoneInput = document.getElementById('phone-number-input');
         const formMessage = document.getElementById('form-message');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
 
-        // 🛑 CRITICAL: REPLACE this placeholder with your actual Formspree Submission URL (e.g., https://formspree.io/f/xxxxxxxx)
+        // 🛑 CRITICAL: The URL is hardcoded here and must be your Formspree Submission URL.
         const FORMSPREE_URL = "URL"; 
 
-        // 2. Countdown Logic
+        // 2. Scroll to Top Button Functionality
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.style.display = "block";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            // Smooth scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // 3. Countdown Logic
         // Set the final date: October 18, 2025, 5:00 PM IST
         const finalDate = new Date('October 18, 2025 17:00:00 GMT+0530').getTime();
 
@@ -634,7 +741,7 @@
         updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
 
-        // 3. Formspree Submission Success Handler
+        // 4. Formspree Submission Success Handler
         function handleFormSuccess() {
             formElement.reset(); // Clear the form input
             formMessage.innerHTML = '✅ <span class="success">You’ve been entered in the draw! Good luck 🍀</span>';
@@ -648,7 +755,7 @@
             localStorage.setItem('adsip_submitted', 'true');
         }
 
-        // 4. Asynchronous Formspree Submission Handler (AJAX)
+        // 5. Asynchronous Formspree Submission Handler (AJAX)
         formElement.addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -683,9 +790,19 @@
                 if (response.ok) {
                     handleFormSuccess(); // Update UI to success state
                 } else {
-                    // Handle server errors (e.g., if Formspree is down or form not active)
-                    const errorText = await response.json();
-                    formMessage.innerHTML = `<span class="error">Submission Error: ${errorText.error || 'Check Formspree dashboard.'}</span>`;
+                    // --- FIX APPLIED HERE: Better Error Handling (Was showing [object Object]) ---
+                    const errorResponse = await response.json();
+                    let errorMessage = 'An unknown server error occurred. Check Formspree dashboard.';
+                    
+                    if (errorResponse.errors && Array.isArray(errorResponse.errors) && errorResponse.errors.length > 0) {
+                        // Display the first validation error message
+                        errorMessage = errorResponse.errors[0].message || 'Form validation failed.';
+                    } else if (errorResponse.error) {
+                         // Display a general error message if present
+                         errorMessage = errorResponse.error;
+                    }
+
+                    formMessage.innerHTML = `<span class="error">Submission Error: ${errorMessage}</span>`;
                     submitButton.disabled = false;
                 }
 
@@ -697,7 +814,7 @@
         });
 
 
-        // 5. Check for duplicate submissions on page load
+        // 6. Check for duplicate submissions on page load
         document.addEventListener('DOMContentLoaded', () => {
             const hasSubmitted = localStorage.getItem('adsip_submitted');
             
@@ -708,7 +825,7 @@
             }
         });
         
-        // 6. Scroll Animations (AOS replacement)
+        // 7. Scroll Animations (AOS replacement)
         const adCards = document.querySelectorAll('.ad-card');
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -730,4 +847,3 @@
     </script>
 </body>
 </html>
-
