@@ -695,8 +695,9 @@
         const formMessage = document.getElementById('form-message');
         const scrollTopBtn = document.getElementById('scrollTopBtn');
 
-        // 🛑 CRITICAL: The URL is hardcoded here and must be your Formspree Submission URL.
-        const FORMSPREE_URL = "URL_HERE"; 
+        // 🛑 CRITICAL: This placeholder must be replaced with your Formspree Submission URL 
+        // during deployment using Vercel environment variable injection.
+        const FORMSPREE_URL = "___VERCEL_FORMSPREE_URL___"; 
 
         // 2. Scroll to Top Button Functionality
         window.onscroll = function() {scrollFunction()};
