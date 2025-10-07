@@ -433,6 +433,17 @@
             border-radius: 10px;
             font-size: 1.2rem;
         }
+        
+        /* NEW FALLBACK BUTTON STYLING */
+        #fallback-submit-button {
+            display: none; /* Initially hidden */
+            margin-top: 15px;
+            background: #444; /* Darker, less distracting fallback style */
+            border: 1px solid #777;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
 
         #submit-button:not(:disabled):hover {
             box-shadow: 0 0 30px rgba(255, 79, 191, 0.8);
@@ -648,6 +659,9 @@
                        name="Phone Number"> 
 
                 <button type="submit" id="submit-button" class="glow-button">Submit & Enter Draw</button>
+                <button type="button" id="fallback-submit-button" class="glow-button" style="display: none;">
+                    Click Here to Finalize Entry
+                </button>
                 <div id="form-message"></div>
             </form>
             
@@ -676,12 +690,13 @@
         const countdownMessage = document.getElementById('countdown-message');
         const formElement = document.getElementById('lucky-draw-form');
         const submitButton = document.getElementById('submit-button');
+        const fallbackButton = document.getElementById('fallback-submit-button');
         const phoneInput = document.getElementById('phone-number-input');
         const formMessage = document.getElementById('form-message');
         const scrollTopBtn = document.getElementById('scrollTopBtn');
 
         // 🛑 CRITICAL: The URL is hardcoded here and must be your Formspree Submission URL.
-        const FORMSPREE_URL = "URL"; 
+        const FORMSPREE_URL = "URL_HERE"; 
 
         // 2. Scroll to Top Button Functionality
         window.onscroll = function() {scrollFunction()};
@@ -747,8 +762,8 @@
             formMessage.innerHTML = '✅ <span class="success">You’ve been entered in the draw! Good luck 🍀</span>';
             
             // Disable form elements to prevent re-submission
-            submitButton.disabled = true;
-            submitButton.textContent = 'Entered! 🎉';
+            submitButton.style.display = 'none'; // Hide AJAX button
+            fallbackButton.style.display = 'none'; // Hide Fallback button
             phoneInput.disabled = true;
 
             // Store flag in local storage to prevent future submissions on next visit
@@ -782,7 +797,6 @@
                     method: 'POST',
                     body: formData,
                     headers: {
-                        // Formspree requires this specific header for AJAX submissions
                         'Accept': 'application/json' 
                     }
                 });
@@ -790,25 +804,49 @@
                 if (response.ok) {
                     handleFormSuccess(); // Update UI to success state
                 } else {
-                    // --- FIX APPLIED HERE: Better Error Handling (Was showing [object Object]) ---
-                    const errorResponse = await response.json();
-                    let errorMessage = 'An unknown server error occurred. Check Formspree dashboard.';
+                    // --- RESILIENT ERROR HANDLING & FALLBACK INITIATION ---
+                    let errorMessage;
                     
-                    if (errorResponse.errors && Array.isArray(errorResponse.errors) && errorResponse.errors.length > 0) {
-                        // Display the first validation error message
-                        errorMessage = errorResponse.errors[0].message || 'Form validation failed.';
-                    } else if (errorResponse.error) {
-                         // Display a general error message if present
-                         errorMessage = errorResponse.error;
+                    try {
+                        const errorResponse = await response.json();
+                        // Attempt to get specific Formspree errors
+                        if (errorResponse.errors && Array.isArray(errorResponse.errors) && errorResponse.errors.length > 0) {
+                            errorMessage = errorResponse.errors[0].message;
+                        } else if (errorResponse.error) {
+                             errorMessage = errorResponse.error;
+                        } else {
+                             errorMessage = 'Unknown server error.';
+                        }
+                    } catch (e) {
+                        // Catch non-JSON errors (like unverified form HTML response)
+                        errorMessage = `Submission Failed (Status: ${response.status}).`;
                     }
+                    
+                    // Display general error and show the fallback button
+                    formMessage.innerHTML = `<span class="error">⚠️ Submission failed silently. Click the button below to finalize entry.</span>`;
+                    
+                    submitButton.style.display = 'none';
+                    fallbackButton.style.display = 'block';
 
-                    formMessage.innerHTML = `<span class="error">Submission Error: ${errorMessage}</span>`;
-                    submitButton.disabled = false;
+                    // Prepare fallback button to use traditional HTML POST method
+                    fallbackButton.onclick = function() {
+                        formMessage.textContent = 'Redirecting to finalize...';
+                        formElement.action = FORMSPREE_URL;
+                        formElement.method = 'POST';
+                        formElement.target = '_blank'; // Open Formspree page in new tab
+                        formElement.submit(); // Perform HTML form submit
+                        
+                        // After redirection, disable the inputs to prevent immediate re-click
+                        phoneInput.disabled = true;
+                        fallbackButton.disabled = true;
+                        // Set success message for when user returns from the new tab
+                        localStorage.setItem('adsip_submitted', 'true');
+                    };
                 }
 
             } catch (error) {
                 console.error('Submission Failed:', error);
-                formMessage.innerHTML = '<span class="error">🚨 Network Error. Could not submit form.</span>';
+                formMessage.innerHTML = '<span class="error">🚨 Network Error. Check your connection or deployment setup.</span>';
                 submitButton.disabled = false;
             }
         });
